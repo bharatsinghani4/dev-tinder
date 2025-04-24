@@ -13,11 +13,11 @@ const App = () => {
       element: <Body />,
       children: [
         {
-          path: "",
+          path: "feed",
           element: <Feed />,
         },
         {
-          path: "login",
+          path: "",
           element: <Login />,
         },
         {
@@ -32,4 +32,5 @@ const App = () => {
 };
 
 export default App;
+
 
