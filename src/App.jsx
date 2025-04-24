@@ -1,5 +1,8 @@
 import React from "react";
+import { Provider } from "react-redux";
 import { createBrowserRouter, RouterProvider } from "react-router";
+
+import { appStore } from "./store/appStore";
 
 import Body from "./components/Body";
 import Feed from "./components/Feed";
@@ -13,11 +16,11 @@ const App = () => {
       element: <Body />,
       children: [
         {
-          path: "feed",
+          path: "",
           element: <Feed />,
         },
         {
-          path: "",
+          path: "login",
           element: <Login />,
         },
         {
@@ -28,7 +31,11 @@ const App = () => {
     },
   ]);
 
-  return <RouterProvider router={appRouter} />;
+  return (
+    <Provider store={appStore}>
+      <RouterProvider router={appRouter} />
+    </Provider>
+  );
 };
 
 export default App;
