@@ -9,14 +9,17 @@ const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [email, setEmail] = useState("bharat@gmail.com");
+  const [error, setError] = useState(null);
   const [password, setPassword] = useState("Singhani@1304");
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
+    setError(null);
   };
 
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
+    setError(null);
   };
 
   const handleFormSubmit = async (e) => {
@@ -37,7 +40,7 @@ const Login = () => {
       dispatch(addUser(response.data));
       navigate("/");
     } catch (error) {
-      console.log(error);
+      setError(error?.response?.data || "Something went wrong.");
     }
   };
 
@@ -66,6 +69,9 @@ const Login = () => {
               onChange={handlePasswordChange}
               value={password}
             />
+            <p className="text-red-400 text-center font-semibold text-sm mt-4">
+              {error}
+            </p>
             <button
               className="btn  btn-primary mt-4"
               type="submit"
