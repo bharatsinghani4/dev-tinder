@@ -1,7 +1,8 @@
-import axios from "axios";
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router";
+import { useDispatch, useSelector } from "react-redux";
+import axios from "axios";
+
 import { BASE_URL } from "../utils/constants";
 import { removeUser } from "../store/userSlice";
 
@@ -17,7 +18,7 @@ const Navbar = () => {
       dispatch(removeUser());
       navigate("/login");
     } catch (error) {
-      console.log(error);
+      console.errr(error);
     }
   };
 
@@ -55,7 +56,7 @@ const Navbar = () => {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
+              className="menu menu-sm dropdown-content bg-base-300 rounded-box z-1 mt-3 w-52 p-2 shadow"
             >
               <li>
                 <Link
@@ -63,7 +64,6 @@ const Navbar = () => {
                   className="justify-between"
                 >
                   Profile
-                  <span className="badge">New</span>
                 </Link>
               </li>
               <li>

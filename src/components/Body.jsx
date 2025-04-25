@@ -1,12 +1,13 @@
 import React, { useEffect } from "react";
 import { Outlet, useNavigate } from "react-router";
+import { useDispatch, useSelector } from "react-redux";
+import axios from "axios";
+
+import { addUser } from "../store/userSlice";
+import { BASE_URL } from "../utils/constants";
 
 import Navbar from "./Navbar";
 import Footer from "./Footer";
-import axios from "axios";
-import { BASE_URL } from "../utils/constants";
-import { useDispatch, useSelector } from "react-redux";
-import { addUser } from "../store/userSlice";
 
 const Body = () => {
   const dispatch = useDispatch();
@@ -20,10 +21,7 @@ const Body = () => {
       });
 
       dispatch(addUser(user.data));
-      // navigate("/");
     } catch (error) {
-      console.log(error);
-
       if (error.status === 401) {
         navigate("/login");
       }

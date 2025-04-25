@@ -1,8 +1,9 @@
-import axios from "axios";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { addUser } from "../store/userSlice";
 import { useNavigate } from "react-router";
+import axios from "axios";
+
+import { addUser } from "../store/userSlice";
 import { BASE_URL } from "../utils/constants";
 
 const Login = () => {
@@ -45,7 +46,7 @@ const Login = () => {
   };
 
   return (
-    <div className="h-[calc(100vh_-_242px)] flex items-center justify-center">
+    <div className="min-h-[calc(100vh_-_242px)] flex items-center justify-center">
       <div className="card card-border bg-base-200 w-96 border-base-300 border">
         <div className="card-body">
           <h2 className="card-title justify-center text-3xl">Login</h2>
