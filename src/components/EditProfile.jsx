@@ -151,7 +151,7 @@ const EditProfile = ({ user }) => {
               />
             </fieldset>
             {error && (
-              <p className="text-red-400 text-center font-semibold text-sm mt-4">
+              <p className="text-red-400 text-center font-semibold text-sm mt-4 overflow-hidden max-h-20 h-auto whitespace-pre-wrap break-words">
                 {error}
               </p>
             )}

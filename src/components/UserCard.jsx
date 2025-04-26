@@ -26,16 +26,17 @@ const UserCard = ({ userInfo, isEditProfile = false }) => {
 
   return (
     <div className="card bg-base-300 w-80 shadow-xl h-max">
-      <figure className="">
+      <figure className="w-full max-h-75 h-full">
         <img
+          className="h-full max-w-full object-contain"
           src={photoUrl}
           alt="User photo"
         />
       </figure>
       <div className="card-body items-center text-center">
-        <h2 className="card-title">{firstName + " " + lastName}</h2>
+        <h2 className="card-title text-2xl">{firstName + " " + lastName}</h2>
         {age && gender && <p className="capitalize">{age + ", " + gender}</p>}
-        <p>{about}</p>
+        <p className="my-2">{about}</p>
         {!!skills.length && <p>Skills: {skills}</p>}
         {!isEditProfile && (
           <div className="card-actions justify-around flex w-full mt-2">

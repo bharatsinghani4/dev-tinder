@@ -14,8 +14,6 @@ const Feed = () => {
   const user = useSelector((store) => store.user);
 
   const fetchFeed = async () => {
-    if (feed.length) return;
-
     try {
       const response = await axios.get(BASE_URL + "/feed", {
         withCredentials: true,
