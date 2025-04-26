@@ -39,7 +39,10 @@ const Connections = () => {
           <h1 className="text-3xl font-bold text-center mb-10">Connections</h1>
           <div className="flex flex-wrap gap-10">
             {connections.map((connection) => (
-              <div className="card card-side bg-base-300 shadow-xl w-[50%]">
+              <div
+                key={connection._id}
+                className="card card-side bg-base-300 shadow-xl w-[50%]"
+              >
                 <figure className="flex-[1_0_33%]">
                   <img
                     src={connection.photoUrl}
@@ -67,8 +70,10 @@ const Connections = () => {
       ) : (
         <div className="hero bg-base-200 w-[75%] h-full mx-auto my-10">
           <div className="hero-content text-center py-20">
-            <div className="max-w-md">
-              <h1 className="text-5xl font-bold">Hello {user?.firstName}</h1>
+            <div className="max-w-lg">
+              <h1 className="text-5xl font-bold">
+                Hello, {user?.firstName} !!
+              </h1>
               <p className="py-6">
                 Unfortunately, you don't have any connections at this moment.
                 Not to worry, you can go to your feed and start sending some

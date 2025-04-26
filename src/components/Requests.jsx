@@ -19,7 +19,6 @@ const Requests = () => {
         withCredentials: true,
       });
 
-      console.log(response);
       dispatch(addRequests(response.data.data));
     } catch (error) {
       console.log(error);
@@ -70,8 +69,10 @@ const Requests = () => {
       ) : (
         <div className="hero bg-base-200 w-[75%] h-full mx-auto my-10">
           <div className="hero-content text-center py-20">
-            <div className="max-w-md">
-              <h1 className="text-5xl font-bold">Hello {user?.firstName}</h1>
+            <div className="max-w-lg">
+              <h1 className="text-5xl font-bold">
+                Hello, {user?.firstName} !!
+              </h1>
               <p className="py-6">
                 Unfortunately, you don't have any requests at this moment. Not
                 to worry, you can go to your feed and start sending some

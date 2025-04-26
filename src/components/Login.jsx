@@ -9,9 +9,22 @@ import { BASE_URL } from "../utils/constants";
 const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [email, setEmail] = useState("bharat@gmail.com");
+  const [firstName, setFirstName] = useState("");
+  const [email, setEmail] = useState("");
   const [error, setError] = useState(null);
-  const [password, setPassword] = useState("Singhani@1304");
+  const [lastName, setLastName] = useState("");
+  const [password, setPassword] = useState("");
+  const [showSignUpForm, setShowSignUpForm] = useState(false);
+
+  const handleFirstNameChange = (e) => {
+    setFirstName(e.target.value);
+    setError(null);
+  };
+
+  const handleLastNameChange = (e) => {
+    setLastName(e.target.value);
+    setError(null);
+  };
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -23,7 +36,7 @@ const Login = () => {
     setError(null);
   };
 
-  const handleFormSubmit = async (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
 
     try {
@@ -45,15 +58,61 @@ const Login = () => {
     }
   };
 
+  const handleSignUp = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await axios.post(
+        BASE_URL + "/signup",
+        {
+          firstName,
+          lastName,
+          emailId: email,
+          password,
+        },
+        {
+          withCredentials: true,
+        }
+      );
+
+      dispatch(addUser(response.data.data));
+      navigate("/profile");
+    } catch (error) {
+      setError(error?.response?.data || "Something went wrong.");
+    }
+  };
+
   return (
     <div className="min-h-[calc(100vh_-_205px)] flex items-center justify-center">
       <div className="card card-border bg-base-200 w-96 border-base-300 border">
         <div className="card-body">
-          <h2 className="card-title justify-center text-3xl">Login</h2>
+          <h2 className="card-title justify-center text-3xl">
+            {showSignUpForm ? "Sign Up" : "Login"}
+          </h2>
           <form
             className="fieldset bg-base-200 rounded-box w-full p-4"
-            onSubmit={handleFormSubmit}
+            onSubmit={showSignUpForm ? handleSignUp : handleLogin}
           >
+            {showSignUpForm && (
+              <>
+                <label className="label">First Name</label>
+                <input
+                  type="text"
+                  className="input input-primary"
+                  placeholder="First Name"
+                  onChange={handleFirstNameChange}
+                  value={firstName}
+                />
+                <label className="label">Last Name</label>
+                <input
+                  type="text"
+                  className="input input-primary"
+                  placeholder="Last Name"
+                  onChange={handleLastNameChange}
+                  value={lastName}
+                />
+              </>
+            )}
             <label className="label">Email</label>
             <input
               type="email"
@@ -70,14 +129,39 @@ const Login = () => {
               onChange={handlePasswordChange}
               value={password}
             />
-            <p className="text-red-400 text-center font-semibold text-sm mt-4">
-              {error}
+            <p>
+              {showSignUpForm ? (
+                <>
+                  {"Already a customer? "}{" "}
+                  <a
+                    className="link link-primary"
+                    onClick={() => setShowSignUpForm(false)}
+                  >
+                    Login
+                  </a>
+                </>
+              ) : (
+                <>
+                  {"Not registered with us? "}{" "}
+                  <a
+                    className="link link-primary"
+                    onClick={() => setShowSignUpForm(true)}
+                  >
+                    Signup now
+                  </a>
+                </>
+              )}
             </p>
+            {error && (
+              <p className="text-red-400 text-center font-semibold text-sm mt-4">
+                {error}
+              </p>
+            )}
             <button
               className="btn  btn-primary mt-4"
               type="submit"
             >
-              Login
+              {showSignUpForm ? "Sign Up" : "Login"}
             </button>
           </form>
         </div>
