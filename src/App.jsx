@@ -8,6 +8,8 @@ import Body from "./components/Body";
 import Feed from "./components/Feed";
 import Login from "./components/Login";
 import Profile from "./components/Profile";
+import Requests from "./components/Requests";
+import Connections from "./components/Connections";
 
 const App = () => {
   const appRouter = createBrowserRouter([
@@ -27,6 +29,14 @@ const App = () => {
           path: "profile",
           element: <Profile />,
         },
+        {
+          path: "requests",
+          element: <Requests />,
+        },
+        {
+          path: "connections",
+          element: <Connections />,
+        },
       ],
     },
   ]);
@@ -39,5 +49,8 @@ const App = () => {
 };
 
 export default App;
+
+
+
 
 

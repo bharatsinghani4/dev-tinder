@@ -46,7 +46,7 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-[calc(100vh_-_242px)] flex items-center justify-center">
+    <div className="min-h-[calc(100vh_-_205px)] flex items-center justify-center">
       <div className="card card-border bg-base-200 w-96 border-base-300 border">
         <div className="card-body">
           <h2 className="card-title justify-center text-3xl">Login</h2>

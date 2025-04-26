@@ -51,7 +51,7 @@ const EditProfile = ({ user }) => {
   };
 
   return (
-    <div className="min-h-[calc(100vh_-_242px)] h-full flex justify-center p-10 gap-10">
+    <div className="min-h-[calc(100vh_-_205px)] h-full flex justify-center p-10 gap-10">
       {showToast && (
         <div className="toast toast-top toast-center">
           <div className="alert alert-success">
@@ -76,46 +76,50 @@ const EditProfile = ({ user }) => {
                 disabled
               />
             </fieldset> */}
-            <fieldset className="fieldset">
-              <legend className="fieldset-legend">First Name</legend>
-              <input
-                type="text"
-                className="input input-primary w-full"
-                placeholder="First Name"
-                value={firstName}
-                onChange={(e) => setFirstName(e.target.value)}
-              />
-            </fieldset>
-            <fieldset className="fieldset">
-              <legend className="fieldset-legend">Last Name</legend>
-              <input
-                type="text"
-                className="input input-primary w-full"
-                placeholder="Last Name"
-                value={lastName}
-                onChange={(e) => setLastName(e.target.value)}
-              />
-            </fieldset>
-            <fieldset className="fieldset">
-              <legend className="fieldset-legend">Age</legend>
-              <input
-                type="text"
-                className="input input-primary w-full"
-                placeholder="Age(in years)"
-                value={age}
-                onChange={(e) => setAge(e.target.value)}
-              />
-            </fieldset>
-            <fieldset className="fieldset">
-              <legend className="fieldset-legend">Gender</legend>
-              <input
-                type="text"
-                className="input input-primary w-full"
-                placeholder="Gender"
-                value={gender}
-                onChange={(e) => setGender(e.target.value)}
-              />
-            </fieldset>
+            <div className="flex gap-10">
+              <fieldset className="fieldset w-full">
+                <legend className="fieldset-legend">First Name</legend>
+                <input
+                  type="text"
+                  className="input input-primary w-full"
+                  placeholder="First Name"
+                  value={firstName}
+                  onChange={(e) => setFirstName(e.target.value)}
+                />
+              </fieldset>
+              <fieldset className="fieldset w-full">
+                <legend className="fieldset-legend">Last Name</legend>
+                <input
+                  type="text"
+                  className="input input-primary w-full"
+                  placeholder="Last Name"
+                  value={lastName}
+                  onChange={(e) => setLastName(e.target.value)}
+                />
+              </fieldset>
+            </div>
+            <div className="flex gap-10">
+              <fieldset className="fieldset w-full">
+                <legend className="fieldset-legend">Age</legend>
+                <input
+                  type="text"
+                  className="input input-primary w-full"
+                  placeholder="Age(in years)"
+                  value={age}
+                  onChange={(e) => setAge(e.target.value)}
+                />
+              </fieldset>
+              <fieldset className="fieldset w-full">
+                <legend className="fieldset-legend">Gender</legend>
+                <input
+                  type="text"
+                  className="input input-primary w-full"
+                  placeholder="Gender"
+                  value={gender}
+                  onChange={(e) => setGender(e.target.value)}
+                />
+              </fieldset>
+            </div>
             <fieldset className="fieldset">
               <legend className="fieldset-legend">Photo URL</legend>
               <input
@@ -146,9 +150,11 @@ const EditProfile = ({ user }) => {
                 onChange={(e) => setSkills(e.target.value)}
               />
             </fieldset>
-            <p className="text-red-400 text-center font-semibold text-sm mt-4">
-              {error}
-            </p>
+            {error && (
+              <p className="text-red-400 text-center font-semibold text-sm mt-4">
+                {error}
+              </p>
+            )}
             <button
               className="btn btn-soft btn-primary mt-4 w-max justify-self-center"
               type="submit"

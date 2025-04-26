@@ -4,6 +4,7 @@ import axios from "axios";
 
 import { BASE_URL } from "../utils/constants";
 import { addFeed } from "../store/feedSlice";
+
 import UserCard from "./UserCard";
 
 const Feed = () => {
@@ -31,14 +32,13 @@ const Feed = () => {
   }, []);
 
   return (
-    <div className="min-h-[calc(100vh_-_242px)] flex items-center justify-center">
-      {!!feed.length &&
-        feed.map((data) => (
-          <UserCard
-            key={data._id}
-            userInfo={data}
-          />
-        ))}
+    <div className="min-h-[calc(100vh_-_205px)] flex items-center justify-center">
+      {!!feed.length && (
+        <UserCard
+          key={feed[0]._id}
+          userInfo={feed[0]}
+        />
+      )}
     </div>
   );
 };
