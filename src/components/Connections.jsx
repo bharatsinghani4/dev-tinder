@@ -45,7 +45,7 @@ const Connections = () => {
               >
                 <figure className="flex-[1_0_33%]">
                   <img
-                    src={connection.photoUrl}
+                    src={connection.photoURL}
                     alt="User photo"
                   />
                 </figure>
