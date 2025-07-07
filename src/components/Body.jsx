@@ -29,7 +29,7 @@ const Body = () => {
   };
 
   useEffect(() => {
-    if (!userData) {
+    if (userData) {
       fetchUser();
     }
   }, []);
