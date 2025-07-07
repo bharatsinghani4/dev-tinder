@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { Outlet, useNavigate } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
@@ -15,6 +15,8 @@ const Body = () => {
   const userData = useSelector((store) => store.user);
 
   const fetchUser = async () => {
+    if (userData) return;
+
     try {
       const user = await axios.get(BASE_URL + "/profile/view", {
         withCredentials: true,
@@ -29,9 +31,9 @@ const Body = () => {
   };
 
   useEffect(() => {
-    if (userData) {
-      fetchUser();
-    }
+    if (!userData) navigate("/login");
+
+    fetchUser();
   }, []);
 
   return (

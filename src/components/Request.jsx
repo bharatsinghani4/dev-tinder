@@ -1,5 +1,3 @@
-import React from "react";
-
 const Request = ({ userInfo, requestId, handleReviewRequest }) => {
   const { about, age, firstName, lastName, photoUrl, skills, gender } =
     userInfo;

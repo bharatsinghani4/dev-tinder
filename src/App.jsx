@@ -1,4 +1,3 @@
-import React from "react";
 import { Provider } from "react-redux";
 import { createBrowserRouter, RouterProvider } from "react-router";
 
@@ -49,8 +48,4 @@ const App = () => {
 };
 
 export default App;
-
-
-
-
 

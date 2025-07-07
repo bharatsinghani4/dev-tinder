@@ -1,6 +1,6 @@
-import axios from "axios";
-import React, { useState } from "react";
+import { useState } from "react";
 import { useDispatch } from "react-redux";
+import axios from "axios";
 
 import { BASE_URL } from "../utils/constants";
 import { updateUser } from "../store/userSlice";
