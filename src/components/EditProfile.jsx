@@ -26,15 +26,13 @@ const EditProfile = ({ user }) => {
     const updatedUser = {
       about,
       age,
-      firstName,
-      lastName,
-      photoUrl,
-      gender,
+      photoURL: photoUrl,
+      gender: gender.toLowerCase(),
       skills: !skills ? "" : skills.trim().split(","),
     };
 
     try {
-      const response = await axios.put(
+      const response = await axios.patch(
         BASE_URL + "/profile/edit",
         updatedUser,
         { withCredentials: true }
@@ -170,7 +168,7 @@ const EditProfile = ({ user }) => {
           age,
           firstName,
           lastName,
-          photoUrl,
+          photoURL: photoUrl,
           skills,
           gender,
         }}

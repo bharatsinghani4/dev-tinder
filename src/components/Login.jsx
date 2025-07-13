@@ -51,7 +51,7 @@ const Login = () => {
         }
       );
 
-      dispatch(addUser(response.data));
+      dispatch(addUser(response.data.user));
       navigate("/");
     } catch (error) {
       setError(error?.response?.data || "Something went wrong.");

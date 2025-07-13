@@ -6,7 +6,7 @@ import { removeUserFromFeed } from "../store/feedSlice";
 
 const UserCard = ({ userInfo, isEditProfile = false }) => {
   const dispatch = useDispatch();
-  const { _id, about, age, firstName, lastName, photoUrl, skills, gender } =
+  const { _id, about, age, firstName, lastName, photoURL, skills, gender } =
     userInfo;
 
   const handleSendRequest = async (status, _id) => {
@@ -28,7 +28,7 @@ const UserCard = ({ userInfo, isEditProfile = false }) => {
       <figure className="w-full max-h-75 h-full">
         <img
           className="h-full max-w-full object-contain"
-          src={photoUrl}
+          src={photoURL}
           alt="User photo"
         />
       </figure>

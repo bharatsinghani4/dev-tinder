@@ -31,8 +31,6 @@ const Body = () => {
   };
 
   useEffect(() => {
-    if (!userData) navigate("/login");
-
     fetchUser();
   }, []);
 
