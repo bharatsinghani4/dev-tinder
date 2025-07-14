@@ -16,7 +16,7 @@ const Feed = () => {
 
   const fetchFeed = async () => {
     try {
-      const response = await axios.get(BASE_URL + "/user/feed", {
+      const response = await axios.get(BASE_URL + "/user/feed", user, {
         withCredentials: true,
       });
 
@@ -30,7 +30,7 @@ const Feed = () => {
   };
 
   useEffect(() => {
-    fetchFeed();
+    if (user) fetchFeed();
   }, []);
 
   return (
