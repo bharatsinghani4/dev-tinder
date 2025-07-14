@@ -1,12 +1,12 @@
 const Request = ({ userInfo, requestId, handleReviewRequest }) => {
-  const { about, age, firstName, lastName, photoUrl, skills, gender } =
+  const { about, age, firstName, lastName, photoURL, skills, gender } =
     userInfo;
 
   return (
     <div className="card card-side bg-base-300 shadow-xl w-[50%]">
       <figure className="flex-[1_0_40%]">
         <img
-          src={photoUrl}
+          src={photoURL}
           alt="User photo"
         />
       </figure>

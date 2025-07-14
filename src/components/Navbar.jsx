@@ -17,7 +17,12 @@ const Navbar = () => {
       dispatch(removeUser());
       navigate("/login");
     } catch (error) {
-      console.errr(error);
+      console.error(error);
+
+      if (error.status === 401) {
+        dispatch(removeUser());
+        navigate("/login");
+      }
     }
   };
 

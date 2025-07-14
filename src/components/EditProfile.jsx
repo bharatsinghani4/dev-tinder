@@ -1,14 +1,16 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router";
 import axios from "axios";
 
 import { BASE_URL } from "../utils/constants";
-import { updateUser } from "../store/userSlice";
+import { removeUser, updateUser } from "../store/userSlice";
 
 import UserCard from "./UserCard";
 
 const EditProfile = ({ user }) => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [about, setAbout] = useState(user?.about || "");
   const [age, setAge] = useState(user?.age || "");
   const [firstName, setFirstName] = useState(user?.firstName || "");
@@ -45,6 +47,12 @@ const EditProfile = ({ user }) => {
       }, 3000);
     } catch (error) {
       setError(error?.response?.data);
+      console.error(error);
+
+      if (error.status === 401) {
+        dispatch(removeUser());
+        navigate("/login");
+      }
     }
   };
 

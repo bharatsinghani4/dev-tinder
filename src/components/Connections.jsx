@@ -1,13 +1,15 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import axios from "axios";
 
 import { BASE_URL } from "../utils/constants";
 import { addConnections } from "../store/connectionsSlice";
+import { removeUser } from "../store/userSlice";
 
 const Connections = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const user = useSelector((store) => store.user);
   const connections = useSelector((store) => store.connections);
 
@@ -19,7 +21,12 @@ const Connections = () => {
 
       dispatch(addConnections(response.data.data));
     } catch (error) {
-      console.log(error);
+      console.error(error);
+
+      if (error.status === 401) {
+        dispatch(removeUser());
+        navigate("/login");
+      }
     }
   };
 

@@ -1,15 +1,17 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import axios from "axios";
 
 import { BASE_URL } from "../utils/constants";
 import { addRequests, removeRequest } from "../store/requestsSlice";
+import { removeUser } from "../store/userSlice";
 
 import Request from "./Request";
 
 const Requests = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const requests = useSelector((store) => store.requests);
   const user = useSelector((store) => store.user);
 
@@ -21,7 +23,12 @@ const Requests = () => {
 
       dispatch(addRequests(response.data.data));
     } catch (error) {
-      console.log(error);
+      console.error(error);
+
+      if (error.status === 401) {
+        dispatch(removeUser());
+        navigate("/login");
+      }
     }
   };
 
@@ -35,7 +42,12 @@ const Requests = () => {
 
       dispatch(removeRequest(_id));
     } catch (error) {
-      console.log(error);
+      console.error(error);
+
+      if (error.status === 401) {
+        dispatch(removeUser());
+        navigate("/login");
+      }
     }
   };
 

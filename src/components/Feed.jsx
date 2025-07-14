@@ -5,6 +5,7 @@ import axios from "axios";
 
 import { BASE_URL } from "../utils/constants";
 import { addFeed } from "../store/feedSlice";
+import { removeUser } from "../store/userSlice";
 
 import UserCard from "./UserCard";
 
@@ -25,12 +26,16 @@ const Feed = () => {
       }
     } catch (error) {
       console.error(error);
-      navigate("/login");
+
+      if (error.status === 401) {
+        dispatch(removeUser());
+        navigate("/login");
+      }
     }
   };
 
   useEffect(() => {
-    if (user) fetchFeed();
+    fetchFeed();
   }, []);
 
   return (

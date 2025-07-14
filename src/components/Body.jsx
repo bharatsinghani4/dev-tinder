@@ -3,7 +3,7 @@ import { Outlet, useNavigate } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 
-import { addUser } from "../store/userSlice";
+import { addUser, removeUser } from "../store/userSlice";
 import { BASE_URL } from "../utils/constants";
 
 import Navbar from "./Navbar";
@@ -24,7 +24,10 @@ const Body = () => {
 
       dispatch(addUser(user.data));
     } catch (error) {
+      console.error(error);
+
       if (error.status === 401) {
+        dispatch(removeUser());
         navigate("/login");
       }
     }
