@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import axios from "axios";
 
 import { BASE_URL } from "../utils/constants";
@@ -10,6 +10,7 @@ import UserCard from "./UserCard";
 
 const Feed = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const feed = useSelector((store) => store.feed);
   const user = useSelector((store) => store.user);
 
@@ -24,6 +25,7 @@ const Feed = () => {
       }
     } catch (error) {
       console.error(error);
+      navigate("/login");
     }
   };
 
