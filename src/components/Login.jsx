@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";
 import axios from "axios";
 
@@ -9,6 +9,7 @@ import { BASE_URL } from "../utils/constants";
 const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const user = useSelector((store) => store.user);
   const [firstName, setFirstName] = useState("");
   const [email, setEmail] = useState("");
   const [error, setError] = useState(null);
@@ -81,6 +82,10 @@ const Login = () => {
       setError(error?.response?.data || "Something went wrong.");
     }
   };
+
+  useEffect(() => {
+    if (user) navigate("/");
+  }, [user]);
 
   return (
     <div className="min-h-[calc(100vh_-_205px)] flex items-center justify-center">

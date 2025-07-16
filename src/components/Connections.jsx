@@ -48,7 +48,7 @@ const Connections = () => {
             {connections.map((connection) => (
               <div
                 key={connection._id}
-                className="card card-side bg-base-300 shadow-xl w-[50%]"
+                className="card card-side bg-base-300 shadow-xl w-[50%] h-[250px]"
               >
                 <figure className="flex-[1_0_33%]">
                   <img
@@ -56,7 +56,7 @@ const Connections = () => {
                     alt="User photo"
                   />
                 </figure>
-                <div className="card-body">
+                <div className="card-body flex-[1_0_100%]">
                   <h2 className="card-title">
                     {connection.firstName + " " + connection.lastName}
                   </h2>

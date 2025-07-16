@@ -53,6 +53,9 @@ const Navbar = () => {
               <li>
                 <Link to={"/requests"}>Requests</Link>
               </li>
+              <li>
+                <Link to={"/premium"}>Premium</Link>
+              </li>
             </ul>
           </div>
           <p className="badge badge-soft badge-success leading-none">
