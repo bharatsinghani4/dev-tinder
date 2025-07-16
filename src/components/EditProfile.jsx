@@ -179,6 +179,8 @@ const EditProfile = ({ user }) => {
           photoURL: photoUrl,
           skills,
           gender,
+          isPremium: user?.isPremium,
+          membership: user?.membership,
         }}
         isEditProfile={true}
       />
