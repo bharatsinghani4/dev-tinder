@@ -10,6 +10,7 @@ import Profile from "./components/Profile";
 import Requests from "./components/Requests";
 import Connections from "./components/Connections";
 import Premium from "./components/Premium";
+import Chat from "./components/Chat";
 
 const App = () => {
   const appRouter = createBrowserRouter([
@@ -41,6 +42,10 @@ const App = () => {
           path: "premium",
           element: <Premium />,
         },
+        {
+          path: "chat/:targetUserId",
+          element: <Chat />,
+        },
       ],
     },
   ]);
@@ -53,7 +58,4 @@ const App = () => {
 };
 
 export default App;
-
-
-
 

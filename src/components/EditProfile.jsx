@@ -189,6 +189,3 @@ const EditProfile = ({ user }) => {
 };
 
 export default EditProfile;
-
-// https://avatars.githubusercontent.com/u/20641276?v=4
-// I am a Frontend Developer as well as an Adobe Target Experimentation Specialist having 7 years of experience.

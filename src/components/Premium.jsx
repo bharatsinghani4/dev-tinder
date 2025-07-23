@@ -61,8 +61,8 @@ const Premium = () => {
   };
 
   useEffect(() => {
-    verifyPremiumUser();
-  }, []);
+    if (!isUserPremium) verifyPremiumUser();
+  }, [isUserPremium]);
 
   return !isUserPremium ? (
     <div className="p-10 min-h-[calc(100vh_-_205px)]">
